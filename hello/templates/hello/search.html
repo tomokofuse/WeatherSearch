@@ -1,0 +1,75 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>{% block title %}{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+    </head>
+    <body>
+        <div class="container">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="card-body row no-gutters align-items-center">
+                    <p class="title">お天気検索</p>
+                    </div>
+                    <form class="card card-sm" action="" method="get">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="都道府県名を入力してください" name="search_area">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <input class="btn btn-lg btn-success" type="submit" value="検索"></input>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                    <!--end of col-->
+                    <div class="card-body row no-gutters align-items-center">
+                        <p class="subtitle">検索したい都道府県を入力し、『検索』ボタンをクリック！</p>
+                    </div>
+                    <div class="card-body row no-gutters align-items-center">
+                        <table class="table"><thead>
+                            <tr>
+                                <th>地域</th>
+                                <th>都道府県</th>
+                                <th>市区町村</th>
+                                <th>日付1</th>
+                                <th>天気1</th>
+                                <th>日付2</th>
+                                <th>天気2</th>
+                            </tr>
+                        </thead><tbody>
+                        {% for tenki in tenkis %}
+                            <tr>
+                                <td>{{ tenki.area }}</td>
+                                <td>{{ tenki.prefecture }}</td>
+                                <td>{{ tenki.city }}</td>
+                                <td>{{ tenki.day_1 }}</td>
+                                <td>{{ tenki.telop_1 }}</td>
+                                <td>{{ tenki.day_2 }}</td>
+                                <td>{{ tenki.telop_2 }}</td>
+                            </tr>
+
+                        {% endfor %}
+                    </tbody></table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>
