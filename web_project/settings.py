@@ -86,11 +86,10 @@ WSGI_APPLICATION = 'web_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'weatherdb',
-        # 'USER': 'dbadmin@demodb200812',
-        # 'PASSWORD': 'Passw0rd',
-        # 'HOST': 'demodb200812.postgres.database.azure.com',
-        # 'PORT': '5432', 
+        'NAME': os.environ['DBNAME'],
+        'HOST': os.environ['DBHOST'],
+        'USER': os.environ['DBUSER'],
+        'PASSWORD': os.environ['DBPASS']
     }
 }
 
